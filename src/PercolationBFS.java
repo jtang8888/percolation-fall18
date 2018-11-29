@@ -34,9 +34,20 @@ public class PercolationBFS extends PercolationDFSFast{
 			}
 		}
 	}
+	/**
+	 * Returns int associated with given row and column
+	 * @param row
+	 * @param col
+	 * @return integer of form row * size + col
+	 */
 	protected int toInt(int row, int col) {
 		return row * myGrid.length + col; 
 	}
+	/**
+	 * Returns an array of coordinates associated with r
+	 * @param r integer to be turned back into coordinates
+	 * @return new array, where entry 0 corresponds to row, and entry 1 corresponds to column
+	 */
 	protected int[] toCoord(int r) {
 		return new int[] {r / myGrid.length, r % myGrid.length}; 
 	}
