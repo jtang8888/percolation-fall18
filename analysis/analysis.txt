@@ -1,22 +1,63 @@
-Your name
-Your netid
+Jeremy Tang
+jyt6
 
-Copy/Paste results from PercolationStats using PercolationDFS
+PercolationDFS
+simulation data for 20 trials
+grid	mean	stddev	time
+100		0.593	0.014	1.100
+200		0.591	0.010	10.685
+400		0.590	0.006	143.714
+
 
 
 Copy/Paste results from PercolationStats using PercolationDFSFast
+simulation data for 20 trials
+grid	mean	stddev	time
+100		0.593	0.014	0.229
+200		0.591	0.010	0.483
+400		0.590	0.006	1.138
+800		0.594	0.004	5.027
+Exception in thread "main" java.lang.StackOverflowError
+	at PercolationDFS.dfs(PercolationDFS.java:105)
 
-
-Copy/Paste results from PercolationStats using PercolationBFS
+PercolationBFS
+simulation data for 20 trials
+grid	mean	stddev	time
+100		0.593	0.014	0.241
+200		0.591	0.010	0.369
+400		0.590	0.006	1.266
+800		0.594	0.004	5.738
+1600	0.592	0.002	31.441
+3200	0.593	0.001	228.433
 
 
 Copy/Paste results from PercolationStats using PercolationUF 
 with the QuickUWPC UnionFind implementation.
+simulation data for 20 trials
+grid	mean	stddev	time
+100		0.593	0.014	0.091
+200		0.591	0.010	0.134
+400		0.590	0.006	0.645
+800		0.594	0.004	3.864
+1600	0.592	0.002	19.690
+3200	0.593	0.001	160.853
 
 1. How does doubling the grid size affect running time (keeping # trials fixed)
+As the grid size doubles, the runtime roughly increases by a factor of 4, suggesting an n^2 relationship.
+This is because the runtime depends on the number of cells that have to be opened before the system
+percolates, and as the size of the grid doubles, the number of cells is quadrupled.The percolation
+threshold is constant relative to grid size, so the number of cells that have to be opened before the 
+system percolates is simply quadrupled as well.
 
 
 2. How does doubling the number of trials affect running time.
+Doubling trials doubles the run time, since the same operations are performed, but just twice.
 
 
 3. Estimate the largest grid size you can run in 24 hours with 20 trials. Explain your reasoning.
+24 hours = 86,400 seconds
+160.853 * 4 * 4 * 4 * 4 = 40,960 * 4 = 163,840 seconds
+   3200 * 2 * 2 * 2 * 2 = 51,200 * 2 = 102,400 gridsize
+
+Assuming a four-fold increase in runtime correlates with a twofold increase in the gridsize, the maximum
+gridsize should be somewhere between 51200 x 51200 and 102400 x 102400.
